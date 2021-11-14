@@ -22,7 +22,7 @@ const MoodForm = (props) => {
     swings: "",
     friends: "",
   });
-  
+
   const handleInputChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -38,12 +38,10 @@ const MoodForm = (props) => {
     console.log(moodData);
     addMood(moodData);
     props.onEntryCb(moodData);
-    
   };
 
   const { dateadded, mood, sleeping, substances, swings, friends } = moodData;
   const addMood = async (moodData) => {
-    
     props.onEntryCb(moodData);
     try {
       console.log(moodData);
@@ -61,33 +59,20 @@ const MoodForm = (props) => {
   };
 
   return (
-    <div className="moodform">
-      <h1>How are you feeling today?</h1>
+    <div className="moodform container">
       <Form className="container" onSubmit={(e) => handleSubmit(e)}>
-        <FormGroup className="row">
+        <FormGroup className="row justify-content-center mt-2">
           Today is:
           <FormControl
             type="date"
             value={dateadded}
             name="dateadded"
             onChange={(e) => handleInputChange(e)}
-            className="m-auto"
+            className="ml-3 col-4"
           ></FormControl>
         </FormGroup>
-        <FormGroup className="row">
-          {/* <FormLabel>
-            Range 1= <span class="material-icons-outlined">sick</span>- 2={" "}
-            <span class="material-icons-outlined">
-              sentiment_very_dissatisfied
-            </span>
-            - 3={" "}
-            <span class="material-icons-outlined">sentiment_dissatisfied</span>-
-            4= <span class="material-icons-outlined">sentiment_neutral</span>-
-            5={" "}
-            <span class="material-icons-outlined">
-              sentiment_very_satisfied
-            </span>
-          </FormLabel> */}
+        <h1>How are you feeling today?</h1>
+        <FormGroup className="row justify-content-center bg-white rounded mx-auto">
           <FormCheck
             label={
               <span class="material-icons-outlined text-primary">sick</span>
@@ -124,6 +109,7 @@ const MoodForm = (props) => {
             id={`inline-radio-3`}
             checked={mood === "3" ? true : false}
             onChange={(e) => handleInputChange(e)}
+            className="d-flex flex-column"
           />
           <FormCheck
             label={

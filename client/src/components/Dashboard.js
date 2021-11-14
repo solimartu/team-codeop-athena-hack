@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, CardTitle } from "react-bootstrap";
 
-const Dashboard = (props) => {
+const CalendarSummary = () => {
   useEffect(() => {
     getEntries();
   }, []);
@@ -88,6 +88,59 @@ const Dashboard = (props) => {
           ))}
       </div>
  
+    </div>
+  );
+};
+
+  //  }
+  const { mood, sleeping, substances, swings, friends } = moodEntries;
+  const getSummary = () => {};
+
+  return (
+    <div className="calendar-summary container">
+      <h1 className="text-bold">Start your journey to wellness</h1>
+      <div className="row">
+        {moodEntries &&
+          moodEntries.map((entry, i) => (
+            <Card key={i} className="col mx-2 p-2">
+              <p>Day {i + 1}</p>
+              <p className="">
+                {+entry.mood +
+                  +entry.sleeping +
+                  +entry.substances +
+                  +entry.swings +
+                  +entry.friends ===
+                -4 ? (
+                  <span className="material-icons-outlined text-red big">
+                    sick
+                  </span>
+                ) : +entry.mood +
+                    +entry.sleeping +
+                    +entry.substances +
+                    +entry.swings +
+                    +entry.friends ===
+                  4 ? (
+                  <span className="material-icons-outlined text-warning big">
+                    sentiment_neutral
+                  </span>
+                ) : +entry.mood +
+                    +entry.sleeping +
+                    +entry.substances +
+                    +entry.swings +
+                    +entry.friends <
+                  4 ? (
+                  <span className="material-icons-outlined text-danger big">
+                    sentiment_very_dissatisfied
+                  </span>
+                ) : (
+                  <span className="material-icons-outlined text-success big">
+                    sentiment_very_satisfied
+                  </span>
+                )}
+              </p>
+            </Card>
+          ))}
+      </div>
     </div>
   );
 };
